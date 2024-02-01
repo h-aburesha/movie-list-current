@@ -6,6 +6,8 @@ import axios from "axios";
 
 // ** MUI imports
 import { Box, Modal } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 // TODO : move interfaces to separate file // or say I choose to keep them here
 
@@ -42,12 +44,23 @@ const ReviewsModal = ({ movieId, open, handleClose }: ReviewsModalProps) => {
     return (
         <Modal open={open} onClose={handleClose} className="modal">
             <Box className="modal-content">
-                {reviews.map((review, index) => (
-                    <div key={index} className="review">
-                        <h2 className="review-author">{review.author}</h2>
-                        <p className="review-content">{review.content}</p>
-                    </div>
-                ))}
+                <IconButton
+                    onClick={handleClose}
+                    className="close-button"
+                    sx={{ alignItems: "flex-end" }}
+                >
+                    <CloseIcon className="close-icon" />
+                </IconButton>
+                {reviews.length > 0 ? (
+                    reviews.map((review, index) => (
+                        <div key={index} className="review">
+                            <h2 className="review-author">{review.author}</h2>
+                            <p className="review-content">{review.content}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p style={{ textAlign: "center" }}>No reviews ... </p>
+                )}
             </Box>
         </Modal>
     );
