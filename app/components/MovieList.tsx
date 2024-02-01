@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
 
+// first interface declaration of Movie
 export interface Movie {
     id: number;
     title: string;

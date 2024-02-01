@@ -1,6 +1,9 @@
 "use client";
 
+// ** React imports
 import { useState } from "react";
+
+// ** MUI imports
 import {
     Card,
     CardContent,
@@ -8,6 +11,11 @@ import {
     Button,
     CardMedia,
 } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+
+// ** component imports
 import { Movie } from "./MovieList";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
@@ -20,7 +28,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
     return (
         <Card className="movie-card">
             <CardMedia
-                key={movie.id} // this is required by React
+                key={movie.id}
                 component="img"
                 height="450"
                 image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} // according to documentation how to build an image url
@@ -28,9 +36,9 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
             />
             <CardContent className="movie-card-title">
                 <Typography variant="h6">{movie.title}</Typography>
-                <Button onClick={handleBookmark}>
-                    {bookmarked ? "Remove Bookmark" : "Bookmark"}
-                </Button>
+                <IconButton onClick={handleBookmark}>
+                    {bookmarked ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+                </IconButton>
             </CardContent>
         </Card>
     );
