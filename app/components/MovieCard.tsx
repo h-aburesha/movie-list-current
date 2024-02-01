@@ -14,7 +14,10 @@ import { Movie } from "./MovieList";
 import ReviewsModal from "./ReviewsModal";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
-    // I though about utilizing simple state management to handle bookmarking but in the case where it is important to retain state (should remain persistent) in the browser (like local storage for instance) I think it would be better to use a more robust solution like Redux or React Context API
+    // I though about utilizing simple state management to handle bookmarking but in the case where it is
+    // important to retain state (should remain persistent) in the browser (like local storage for instance)
+    //  I think it would be better to use a more robust solution like Redux or React Context API
+
     const [bookmarked, setBookmarked] = useState(false);
 
     const [open, setOpen] = useState(false);
@@ -36,7 +39,11 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 alt={movie.title}
             />
             <CardContent className="movie-card-title">
-                <Typography variant="h6" onClick={() => setOpen(true)}>
+                <Typography
+                    variant="h6"
+                    onClick={() => setOpen(true)}
+                    sx={{ fontSize: { xs: "0.8em", sm: "1.2em", md: "1.5em" } }} // I used sx prop to override the default theme for responsiveness
+                >
                     {movie.title}
                 </Typography>
                 <IconButton onClick={handleBookmark}>
