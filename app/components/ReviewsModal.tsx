@@ -13,14 +13,14 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Review, ReviewsModalProps } from "./Types";
 
 const ReviewsModal = ({ movieId, open, handleClose }: ReviewsModalProps) => {
+    // initialize reviews state to an empty array of Review objects as returned by the api call
     const [reviews, setReviews] = useState<Review[]>([]);
 
     useEffect(() => {
         const fetchReviews = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`,
-                    { headers: { accept: "application/json" } }
+                    `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
                 );
                 setReviews(response.data.results);
             } catch (error) {
