@@ -51,6 +51,7 @@ body {
     align-items: center;
     text-align: center;
     font-size: 0.8em;
+    cursor: pointer;
 }
 
 .modal {
