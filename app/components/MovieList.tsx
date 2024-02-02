@@ -9,13 +9,8 @@ import axios from "axios";
 // ** components imports
 import MovieCard from "./MovieCard";
 
-// ** First interface declaration of Movie
-// TODO : move interfaces to separate file
-export interface Movie {
-    id: number;
-    title: string;
-    poster_path: string;
-}
+// ** Types imports
+import { Movie } from "./Types";
 
 const MovieList = () => {
     // initialize movies state to an empty array of Movie objects as returned by the api call

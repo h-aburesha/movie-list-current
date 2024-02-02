@@ -9,18 +9,8 @@ import { Box, Modal } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-// TODO : move interfaces to separate file // or say I choose to keep them here
-
-interface Review {
-    author: string;
-    content: string;
-}
-
-interface ReviewsModalProps {
-    movieId: number;
-    open: boolean;
-    handleClose: () => void;
-}
+// ** Types imports
+import { Review, ReviewsModalProps } from "./Types";
 
 const ReviewsModal = ({ movieId, open, handleClose }: ReviewsModalProps) => {
     const [reviews, setReviews] = useState<Review[]>([]);

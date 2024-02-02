@@ -10,13 +10,16 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 // ** component imports
-import { Movie } from "./MovieList";
 import ReviewsModal from "./ReviewsModal";
+
+// ** Types imports
+import { Movie } from "./Types";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
     // I though about utilizing simple state management to handle bookmarking but in the case where it is
-    // important to retain state (should remain persistent) in the browser (like local storage for instance)
-    //  I think it would be better to use a more robust solution like Redux or React Context API
+    // important to retain state (should remain persistent)
+    // I think it would be better to use a more robust solution like Redux or React Context API
+    // and finding a way to save the state using a cloud service for instance.
 
     const [bookmarked, setBookmarked] = useState(false);
 
