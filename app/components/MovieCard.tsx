@@ -33,7 +33,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
     };
 
     return (
-        <Card className="movie-card">
+        <Card className="movie-card" sx={{ backgroundColor: "floralwhite" }}>
             <CardMedia
                 key={movie.id}
                 component="img"
