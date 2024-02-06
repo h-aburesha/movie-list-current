@@ -13,4 +13,5 @@ export interface ReviewsModalProps {
     movieId: number;
     open: boolean;
     handleClose: () => void;
+    // function with no expected return value
 }
