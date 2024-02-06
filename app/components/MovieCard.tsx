@@ -38,14 +38,16 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 key={movie.id}
                 component="img"
                 height="450"
-                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} // according to documentation how to build an image url
+                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                // according to documentation how to build an image url
                 alt={movie.title}
             />
             <CardContent className="movie-card-title">
                 <Typography
                     variant="h6"
                     onClick={() => setOpen(true)}
-                    sx={{ fontSize: { xs: "0.8em", sm: "1.2em", md: "1.5em" } }} // I used sx prop to override the default theme for responsiveness
+                    sx={{ fontSize: { xs: "0.8em", sm: "1.2em", md: "1.5em" } }}
+                    // I used sx prop to override the default theme for responsiveness
                 >
                     {movie.title}
                 </Typography>
