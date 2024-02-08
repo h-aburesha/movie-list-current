@@ -14,6 +14,7 @@ import { Review, ReviewsModalProps } from "./Types";
 
 const ReviewsModal = ({ movieId, open, handleClose }: ReviewsModalProps) => {
     // initialize reviews state to an empty array of Review objects as returned by the api call
+    // API needs to be called to get the reviews for a particular movie using the movieId
     const [reviews, setReviews] = useState<Review[]>([]);
 
     useEffect(() => {
