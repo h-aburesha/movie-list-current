@@ -50,7 +50,9 @@ const ReviewsModal = ({ movieId, open, handleClose }: ReviewsModalProps) => {
                         </div>
                     ))
                 ) : (
-                    <p style={{ textAlign: "center" }}>No reviews ... </p>
+                    <p style={{ textAlign: "center", marginLeft: 1 }}>
+                        No reviews ...{" "}
+                    </p>
                 )}
             </Box>
         </Modal>
