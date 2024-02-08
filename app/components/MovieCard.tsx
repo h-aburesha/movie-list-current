@@ -8,6 +8,7 @@ import { Card, CardContent, Typography, CardMedia } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import ForumIcon from "@mui/icons-material/Forum";
 
 // ** component imports
 import ReviewsModal from "./ReviewsModal";
@@ -54,7 +55,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                     sx={{ fontSize: { xs: "0.8em", sm: "1.2em", md: "1.5em" } }}
                     // I used sx prop to override the default theme for responsiveness
                 >
-                    {movie.title}
+                    {movie.title} <ForumIcon fontSize="small" />
                 </Typography>
                 <IconButton onClick={handleBookmark}>
                     {bookmarked ? <BookmarkIcon /> : <BookmarkBorderIcon />}
