@@ -11,6 +11,7 @@ import MovieCard from "./MovieCard";
 
 // ** Types imports
 import { Movie } from "./Types";
+import { Typography } from "@mui/material";
 
 const MovieList = () => {
     // initialize movies state to an empty array of Movie objects as returned by the api call
@@ -33,11 +34,13 @@ const MovieList = () => {
     }, []);
 
     return (
-        <div className="movie-list">
-            {movies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-            ))}
-        </div>
+        <>
+            <div className="movie-list">
+                {movies.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} />
+                ))}
+            </div>
+        </>
     );
 };
 
