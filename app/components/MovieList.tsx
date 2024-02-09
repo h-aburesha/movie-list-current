@@ -11,7 +11,6 @@ import MovieCard from "./MovieCard";
 
 // ** Types imports
 import { Movie } from "./Types";
-import { Typography } from "@mui/material";
 
 const MovieList = () => {
     // initialize movies state to an empty array of Movie objects as returned by the api call
