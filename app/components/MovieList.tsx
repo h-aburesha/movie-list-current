@@ -43,7 +43,7 @@ const MovieList = () => {
                 dataLength={movies.length}
                 next={() => setPage(page + 1)}
                 hasMore={true}
-                loader={<h4>Loading...</h4>}
+                loader={<h4 style={{ marginLeft: 20 }}>Loading...</h4>}
             >
                 <div className="movie-list">
                     {movies.map((movie) => (
