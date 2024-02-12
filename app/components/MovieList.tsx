@@ -17,6 +17,7 @@ const MovieList = () => {
     // initialize movies state to an empty array of Movie objects as returned by the api call
     const [movies, setMovies] = useState<Movie[]>([]);
     const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
 
     // useEffect runs after the component is rendered and will use it to fetchMovies
     const fetchMovies = async () => {
@@ -28,6 +29,9 @@ const MovieList = () => {
                 ...prevMovies,
                 ...response.data.results,
             ]);
+            if (response.data.page >= response.data.total_pages) {
+                setHasMore(false);
+            }
         } catch (error) {
             console.error(error);
         }
@@ -42,7 +46,7 @@ const MovieList = () => {
             <InfiniteScroll
                 dataLength={movies.length}
                 next={() => setPage(page + 1)}
-                hasMore={true}
+                hasMore={hasMore}
                 loader={<h4 style={{ marginLeft: 20 }}>Loading...</h4>}
             >
                 <div className="movie-list">
