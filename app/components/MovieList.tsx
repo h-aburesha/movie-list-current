@@ -9,6 +9,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 // ** components imports
 import MovieCard from "./MovieCard";
+import MovieCardSkeleton from "./MovieCardSkeleton";
 
 // ** Types imports
 import { Movie } from "./Types";
@@ -47,7 +48,19 @@ const MovieList = () => {
                 dataLength={movies.length}
                 next={() => setPage(page + 1)}
                 hasMore={hasMore}
-                loader={<h4 style={{ marginLeft: 20 }}>Loading...</h4>}
+                loader={
+                    <div
+                        style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "space-around",
+                            padding: "16px",
+                            margin: "16px",
+                        }}
+                    >
+                        {Array(4).fill(<MovieCardSkeleton />)}
+                    </div>
+                }
             >
                 <div className="movie-list">
                     {movies.map((movie) => (
