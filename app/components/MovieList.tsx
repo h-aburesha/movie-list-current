@@ -19,6 +19,7 @@ const MovieList = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     // useEffect runs after the component is rendered and will use it to fetchMovies
     const fetchMovies = async () => {
@@ -36,6 +37,7 @@ const MovieList = () => {
         } catch (error) {
             console.error(error);
         }
+        setIsLoading(false);
     };
 
     useEffect(() => {
@@ -48,24 +50,14 @@ const MovieList = () => {
                 dataLength={movies.length}
                 next={() => setPage(page + 1)}
                 hasMore={hasMore}
-                loader={
-                    <div
-                        style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            justifyContent: "space-around",
-                            padding: "16px",
-                            margin: "16px",
-                        }}
-                    >
-                        {Array(4).fill(<MovieCardSkeleton />)}
-                    </div>
-                }
+                loader={undefined}
             >
                 <div className="movie-list">
-                    {movies.map((movie) => (
-                        <MovieCard key={movie.id} movie={movie} />
-                    ))}
+                    {isLoading
+                        ? Array(4).fill(<MovieCardSkeleton />)
+                        : movies.map((movie) => (
+                              <MovieCard key={movie.id} movie={movie} />
+                          ))}
                 </div>
             </InfiniteScroll>
         </>
