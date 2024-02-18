@@ -11,7 +11,7 @@ function HomepageTitle() {
         <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8, duration: 1.2 }}
+            transition={{ delay: 1.2, duration: 1.2 }}
         >
             <Box className="page-title">
                 <Typography variant="h4" component="h1">

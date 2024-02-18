@@ -13,6 +13,7 @@ import MovieCardSkeleton from "./MovieCardSkeleton";
 
 // ** Types imports
 import { Movie } from "./Types";
+import { AnimatePresence, motion } from "framer-motion";
 
 const MovieList = () => {
     // initialize movies state to an empty array of Movie objects as returned by the api call
@@ -45,22 +46,46 @@ const MovieList = () => {
     }, [page]);
 
     return (
-        <>
-            <InfiniteScroll
-                dataLength={movies.length}
-                next={() => setPage(page + 1)}
-                hasMore={hasMore}
-                loader={undefined}
-            >
-                <div className="movie-list">
+        <InfiniteScroll
+            dataLength={movies.length}
+            next={() => setPage(page + 1)}
+            hasMore={hasMore}
+            loader={undefined}
+        >
+            <div className="movie-list">
+                <AnimatePresence mode="wait">
                     {isLoading
-                        ? Array(4).fill(<MovieCardSkeleton />)
+                        ? Array(4).fill(
+                              <motion.div
+                                  key="loader"
+                                  initial={{ opacity: 1 }}
+                                  exit={{
+                                      opacity: 0,
+                                      transition: { ease: "easeOut" },
+                                  }}
+                              >
+                                  <MovieCardSkeleton />
+                              </motion.div>
+                          )
                         : movies.map((movie) => (
-                              <MovieCard key={movie.id} movie={movie} />
+                              <motion.div
+                                  key={movie.id}
+                                  initial={{ opacity: 0 }}
+                                  animate={{
+                                      opacity: 1,
+                                      transition: { ease: "easeIn" },
+                                  }}
+                                  exit={{
+                                      opacity: 0,
+                                      transition: { ease: "easeOut" },
+                                  }}
+                              >
+                                  <MovieCard movie={movie} />
+                              </motion.div>
                           ))}
-                </div>
-            </InfiniteScroll>
-        </>
+                </AnimatePresence>
+            </div>
+        </InfiniteScroll>
     );
 };
 
