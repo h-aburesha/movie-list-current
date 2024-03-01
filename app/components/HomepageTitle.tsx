@@ -15,7 +15,7 @@ function HomepageTitle() {
         >
             <Box className="page-title">
                 <Typography variant="h4" component="h1">
-                    Now playing on various platforms 🍿
+                    Now playing on various platforms 🍿🍿
                 </Typography>
             </Box>
         </motion.div>
