@@ -23,7 +23,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
     // and finding a way to save the state using a cloud service for instance.
 
     const [bookmarked, setBookmarked] = useState(false);
-
     const [open, setOpen] = useState(false);
 
     const handleBookmark = () => {
