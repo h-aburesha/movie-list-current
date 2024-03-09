@@ -1,7 +1,8 @@
 "use client";
 
 // ** React imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 // ** MUI imports
 import { Card, CardContent, Typography, CardMedia } from "@mui/material";
@@ -15,6 +16,7 @@ import ReviewsModal from "./ReviewsModal";
 
 // ** Types imports
 import { Movie } from "./Types";
+import Image from "next/image";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
     // I though about utilizing simple state management to handle bookmarking but in the case where it is
@@ -25,9 +27,33 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
     const [bookmarked, setBookmarked] = useState(false);
     const [open, setOpen] = useState(false);
 
+    useEffect(() => {
+        const currentBookmarks: number[] = Cookies.get("bookmarks")
+            ? JSON.parse(Cookies.get("bookmarks")!)
+            : [];
+        setBookmarked(currentBookmarks.includes(movie.id));
+    }, [movie.id]);
+
+    // TODO: REVIEW APPROACH TO HANDLING BOOKMARKS
     const handleBookmark = () => {
+        const currentBookmarks: number[] = Cookies.get("bookmarks")
+            ? JSON.parse(Cookies.get("bookmarks")!)
+            : [];
+
+        let newBookmarks: number[];
+
+        if (!bookmarked) {
+            // If the movie is not already bookmarked, bookmark it
+            newBookmarks = [...currentBookmarks, movie.id];
+        } else {
+            // If the movie is already bookmarked, remove the bookmark
+            newBookmarks = currentBookmarks.filter((id) => id !== movie.id);
+        }
+        // Update the bookmarks cookie and the bookmarked state
+        Cookies.set("bookmarks", JSON.stringify(newBookmarks));
         setBookmarked(!bookmarked);
     };
+
     const handleClose = () => {
         setOpen(false);
     };
@@ -47,6 +73,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 // according to documentation how to build an image url
                 alt={movie.title}
             />
+
             <CardContent className="movie-card-title">
                 <Typography
                     variant="h6"
