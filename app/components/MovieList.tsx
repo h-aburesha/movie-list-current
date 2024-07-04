@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 // ** 3rd party libraries
 import axios from "axios";
+import useSWR from "swr";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 // ** components imports
@@ -13,6 +14,8 @@ import MovieCardSkeleton from "./MovieCardSkeleton";
 
 // ** Types imports
 import { Movie } from "./Types";
+
+const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 const MovieList = () => {
     // initialize movies state to an empty array of Movie objects as returned by the api call
