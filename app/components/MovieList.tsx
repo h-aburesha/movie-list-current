@@ -25,12 +25,9 @@ const MovieList = () => {
     // useEffect runs after the component is rendered and will use it to fetchMovies
     const fetchMovies = async () => {
         try {
-            const response = await axios.get(moviesUrl);
-            setMovies((prevMovies) => [
-                ...prevMovies,
-                ...response.data.results,
-            ]);
-            if (response.data.page >= response.data.total_pages) {
+            const { data } = await axios.get(moviesUrl);
+            setMovies((prevMovies) => [...prevMovies, ...data.results]);
+            if (data.page >= data.total_pages) {
                 setHasMore(false);
             }
         } catch (error) {
