@@ -16,7 +16,6 @@ import ReviewsModal from "./ReviewsModal";
 
 // ** Types imports
 import { Movie } from "./Types";
-import Image from "next/image";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
     // I though about utilizing simple state management to handle bookmarking but in the case where it is
