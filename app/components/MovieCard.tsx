@@ -69,7 +69,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 component="img"
                 height="450"
                 image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                // according to documentation how to build an image url
                 alt={movie.title}
             />
 
