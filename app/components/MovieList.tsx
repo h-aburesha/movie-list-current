@@ -20,13 +20,12 @@ const MovieList = () => {
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
+    const moviesUrl: string = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`;
 
     // useEffect runs after the component is rendered and will use it to fetchMovies
     const fetchMovies = async () => {
         try {
-            const response = await axios.get(
-                `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`
-            );
+            const response = await axios.get(moviesUrl);
             setMovies((prevMovies) => [
                 ...prevMovies,
                 ...response.data.results,
