@@ -71,7 +71,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
             />
-
             <CardContent className="movie-card-title">
                 <Typography
                     variant="h6"
