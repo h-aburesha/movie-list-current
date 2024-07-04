@@ -77,7 +77,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                     variant="h6"
                     onClick={() => setOpen(true)}
                     sx={{ fontSize: { xs: "0.8em", sm: "1.2em", md: "1.5em" } }}
-                    // I used sx prop to override the default theme for responsiveness
                 >
                     {movie.title} <ForumIcon fontSize="small" />
                 </Typography>
